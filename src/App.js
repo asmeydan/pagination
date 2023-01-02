@@ -1,9 +1,15 @@
+import { useEffect } from "react";
+import Pagination from "./components/Pagination";
 
-function App() {
+function App({ posts}) {
+
+  useEffect(()=> {
+    
+  }, [])
+
   return (
-    <div>
-
-      asmeydan
+    <div className=" min-h-screen">
+      <Pagination/>
     </div>
   );
 }

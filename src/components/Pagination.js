@@ -23,7 +23,7 @@ const Pagination = () => {
     <div className=" min-h-screen flex flex-col items-center justify-center pb-52 pt-5">
       <Posts posts={posts} count={count} page={page} />
 
-      <PagePagination setPage={setPage} page={page} />
+      <PagePagination setPage={setPage} page={page} posts={posts} count={count} />
       <div></div>
     </div>
   );

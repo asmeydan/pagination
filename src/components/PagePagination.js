@@ -10,28 +10,16 @@ const PagePagination = ({ setPage, page, posts, count }) => {
     page + 4,
   ]);
 
-  const prevHandle = () => {
-    setPage((page) => page - 1);
-    handlePage(page);
+  const pageHandle = (e)=> {
+    setPage(e);
     console.log(page);
-  };
-  const nextHandle = () => {
-    setPage((page) => page + 1);
-    handlePage(page);
-    console.log(page);
-  };
-  const handlePage = (i) => {
-    if (i > 3 && i < posts.length / count - 2) {
-      setPageNumbers([i - 2, i - 1, i, i + 1, i + 2]);
-    }
-  };
+  }
+  
 
   return (
     <div className=" flex gap-2">
       <div
-        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer"
-        onClick={() => {prevHandle()}}
-      >
+        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer" onClick={()=>{pageHandle(page - 1)}}>
         <GrPrevious />
       </div>
       {page - 3 > 0 && (
@@ -43,13 +31,7 @@ const PagePagination = ({ setPage, page, posts, count }) => {
         <div
           className={`border rounded py-2 px-3 border-gray-400 hover:bg-gray-500 cursor-pointer ${
             i === page ? ` bg-gray-400` : ``
-          }`}
-          onClick={() => {
-            setPage(i);
-            handlePage(i);
-          }}
-          key={i}
-        >
+          }`} key={i} onClick={()=>pageHandle(i)}>
           {i}
         </div>
       ))}
@@ -59,9 +41,7 @@ const PagePagination = ({ setPage, page, posts, count }) => {
         </div>
       )}
       <div
-        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer"
-        onClick={() => { nextHandle()}}
-      >
+        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer" onClick={()=>{pageHandle(page + 1)}}>
         <GrNext />
       </div>
     </div>

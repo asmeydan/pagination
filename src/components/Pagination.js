@@ -10,9 +10,7 @@ const Pagination = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const res = await axios.get(
-        "https://jsonplaceholder.typicode.com/photos"
-      );
+      const res = await axios.get("https://jsonplaceholder.typicode.com/photos");
       setPosts(res.data);
     };
 

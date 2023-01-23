@@ -10,16 +10,19 @@ const PagePagination = ({ setPage, page, posts, count }) => {
     page + 4,
   ]);
 
-  const pageHandle = (e)=> {
+  const pageHandle = (e) => {
     setPage(e);
     console.log(page);
-  }
-  
+  };
 
   return (
     <div className=" flex gap-2">
       <div
-        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer" onClick={()=>{pageHandle(page - 1)}}>
+        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer"
+        onClick={() => {
+          pageHandle(page - 1);
+        }}
+      >
         <GrPrevious />
       </div>
       {page - 3 > 0 && (
@@ -31,17 +34,31 @@ const PagePagination = ({ setPage, page, posts, count }) => {
         <div
           className={`border rounded py-2 px-3 border-gray-400 hover:bg-gray-500 cursor-pointer ${
             i === page ? ` bg-gray-400` : ``
-          }`} key={i} onClick={()=>pageHandle(i)}>
+          }`}
+          key={i}
+          onClick={() => pageHandle(i)}
+        >
           {i}
         </div>
       ))}
       {posts.length / count - page + 3 > 0 && (
-        <div className="border rounded py-2 px-3 border-gray-200 text-gray-500">
-          ...
+        <div className=" flex gap-2">
+          <div className="border rounded py-2 px-3 border-gray-200 text-gray-500">
+            ...
+          </div>
+          <div
+            className={`border rounded py-2 px-3 border-gray-400 hover:bg-gray-500 cursor-pointer`}
+            onClick={() => pageHandle(posts.length/count)} >
+            {posts.length / count}
+          </div>
         </div>
       )}
       <div
-        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer" onClick={()=>{pageHandle(page + 1)}}>
+        className=" flex justify-center items-center border rounded py-2 px-3 border-gray-400 hover:bg-gray-400 cursor-pointer"
+        onClick={() => {
+          pageHandle(page + 1);
+        }}
+      >
         <GrNext />
       </div>
     </div>

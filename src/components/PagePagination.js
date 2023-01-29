@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { GrPrevious, GrNext } from "react-icons/gr";
 
 const PagePagination = ({ setPage, page, posts, count }) => {
-  const [totpage] = useState(posts.length / count)
   const [pageNumbers, setPageNumbers] = useState([
     page + 1,
     page + 2,
@@ -14,13 +13,13 @@ const PagePagination = ({ setPage, page, posts, count }) => {
     if(page < 4) {
       setPageNumbers([2, 3, 4])
     }
-    else if( page > totpage - 3) {
-      setPageNumbers([totpage - 3, totpage - 2, totpage - 1])
+    else if( page > posts.length / count - 3) {
+      setPageNumbers([posts.length / count - 3, posts.length / count - 2, posts.length / count - 1])
     }
     else {
       setPageNumbers([page - 1, page, page + 1])
     }
-  }, [page, totpage])
+  }, [page, posts, count])
 
   const pageHandle = (e) => {
     setPage(e);

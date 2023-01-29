@@ -7,7 +7,9 @@ const Posts = ({ posts, count, page }) => {
         
         <li key={post.id} className=" border-2 w-full flex justify-between items-center rounded-xl overflow-hidden">
           <img src={post.thumbnailUrl} alt={post.id} />
-          {post.title}
+          <div>
+            {post.id}) {post.title}
+          </div>
           <div></div>
         </li>
 
